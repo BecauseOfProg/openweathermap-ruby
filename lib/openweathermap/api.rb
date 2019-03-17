@@ -86,7 +86,11 @@ module OpenWeatherMap
       end
 
       response = Net::HTTP.get_response(URI(url))
-      response.body
+      case response.code.to_i
+      when 401 then raise OpenWeatherMap::Exceptions::Unauthorized, "[openweathermap] error : unauthorized key. API message : #{response.message}"
+      when 404 then raise OpenWeatherMap::Exceptions::UnknownLocation, "[openweathermap] error : unknown location. API message : #{location}"
+      else response.body
+      end
     end
   end
 end
