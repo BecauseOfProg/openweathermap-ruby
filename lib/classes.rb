@@ -11,6 +11,31 @@ CONDITION_CODE = {
   '50d' => '🌫',
 }
 
+# Represents a city
+class City
+  # @return [String] City's name
+  attr_reader :name
+
+  # @return [Coordinates] City's coordinates
+  attr_reader :coordinates
+
+  # @return [String] Country in which the city is
+  attr_reader :country
+
+  # Create a new City object
+  #
+  # @param name [String] City's name
+  # @param lon [Float] Longitude of the city
+  # @param lat [Float] Latitude of the city
+  # @param country [String] Country in which the city is
+  def initialize(name, lon, lat, country)
+    @name = name
+    @coordinates = Coordinates.new(lon, lat)
+    @country = country
+  end
+end
+
+# Represents a location's coordinates
 class Coordinates
   # @return [Float] Longitude of the location
   attr_reader :lon
@@ -19,7 +44,6 @@ class Coordinates
   attr_reader :lat
 
   # Create a new Coordinates object
-  #
   #
   # @param lon [Float] Longitude of the location
   # @param lat [Float] Latitude of the location
@@ -31,6 +55,9 @@ end
 
 # Represents the weather conditions
 class WeatherConditions
+  # @return [Time] time of the condition
+  attr_reader :time
+
   # @return [String] Main weather contitions at the moment
   attr_reader :main
 
@@ -82,6 +109,7 @@ class WeatherConditions
   #
   # @param data [Hash] all the received data
   def initialize(data)
+    @time = Time.at(data['dt'])
     @main = data['weather'][0]['main']
     @description = data['weather'][0]['description']
     @icon = "https://openweathermap.org/img/w/#{data['weather'][0]['icon']}.png"

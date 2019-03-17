@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'owm-ruby'
-  s.version     = '0.0.1'
+  s.version     = '0.1.1'
   s.date        = '2019-03-16'
   s.summary     = "🌐 Implementation of OpenWeatherMap API."
   s.description = "An implementation to easily fetch the OpenWeatherMap API."
