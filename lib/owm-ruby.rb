@@ -3,6 +3,7 @@ require 'json'
 
 require_relative 'classes'
 require_relative 'current-weather'
+require_relative 'forecast'
 
 # URL of the OpenWeatherMap API
 API_URL = 'https://api.openweathermap.org'
@@ -15,7 +16,8 @@ LANGS = ['fr', 'en']
 
 # The different URLs 
 URLS = {
-  current: '/data/2.5/weather'
+  current: '/data/2.5/weather',
+  forecast: '/data/2.5/forecast'
 }
 
 # Exception to handle unknown lang
@@ -64,15 +66,21 @@ class WeatherAPI
   #   - Array : search by coordinates (format : [lon, lat])
   # @return [CurrentWeather] requested data
   def current(location)
-    options = {}
-    options[:q] = location if location.is_a? String
-    options[:id] = location if location.is_a? Integer
-    if location.is_a? Array
-      options[:lon] = location[0]
-      options[:lat] = location[1]
-    end
-    data = make_request(URLS[:current], options)
+    data = make_request(URLS[:current], location)
     CurrentWeather.new(data)
+  end
+
+  # Get weather forecast for a specific location.
+  #
+  # @param location [String, Integer, Array] the location
+  #   Can be one of this type :
+  #   - String : search by city name
+  #   - Integer : search by city ID (refer to bulk.openweathermap.org/sample/city.list.json.gz)
+  #   - Array : search by coordinates (format : [lon, lat])
+  # @return [CurrentWeather] requested data
+  def forecast(location)
+    data = make_request(URLS[:forecast], location)
+    Forecast.new(data)
   end
 
   private
@@ -82,7 +90,15 @@ class WeatherAPI
   # @param url [String] The endpoint to reach
   # @param options [Hash] mixed options
   # @return [String] request's body
-  def make_request(url, options = {})
+  def make_request(url, location)
+    options = {}
+    options[:q] = location if location.is_a? String
+    options[:id] = location if location.is_a? Integer
+    if location.is_a? Array
+      options[:lon] = location[0]
+      options[:lat] = location[1]
+    end
+
     params = {
       apikey: @api_key,
       lang: @lang,
