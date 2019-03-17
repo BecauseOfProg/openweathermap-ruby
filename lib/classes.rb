@@ -58,6 +58,26 @@ class WeatherConditions
   # @return [Float] Humidity percentage
   attr_reader :humidity
 
+  # @return [Hash] Wind data. Keys : (symbols)
+  #   - speed : Wind speed (m/s or miles/hour)
+  #   - direction : Wind direction (meteorological degrees)
+  attr_reader :wind
+
+  # @return [Float] Clouds percentage
+  attr_reader :clouds
+
+  # @return [Hash, nil] Rain volume. Keys : (symbols)
+  #   - one_hour : Rain volume for the last 1 hour (mm)
+  #   - three_hours : Rain volume for the last 3 hours (mm)
+  # Can be nil if there is no rain
+  attr_reader :rain
+
+  # @return [Hash, nil] Snow volume. Keys : (symbols)
+  #   - one_hour : Snow volume for the last 1 hour (mm)
+  #   - three_hours : Snow volume for the last 3 hours (mm)
+  # Can be nil if there is no snow
+  attr_reader :snow
+
   # Create a new WeatherConditions object.
   #
   # @param data [Hash] all the received data
@@ -67,9 +87,22 @@ class WeatherConditions
     @icon = "https://openweathermap.org/img/w/#{data['weather'][0]['icon']}.png"
     @emoji = CONDITION_CODE[data['weather'][0]['icon'].sub('n', 'd')]
     @temperature = data['main']['temp']
-    @temp_min = data['main']['temp_min']
-    @temp_max = data['main']['temp_max']
-    @pressure = data['main']['pressure']
-    @humidity = data['main']['humidity']
+    @temp_min = data['main']['temp_min'].to_f
+    @temp_max = data['main']['temp_max'].to_f
+    @pressure = data['main']['pressure'].to_f
+    @humidity = data['main']['humidity'].to_f
+    @wind = {
+      speed: data['wind']['speed'],
+      direction: data['wind']['deg']
+    }
+    @clouds = data['clouds']['all'].to_f
+    @rain = data['rain'].nil? ? nil : {
+      one_hour: data['rain']['1h'],
+      three_hours: data['rain']['3h']
+    }
+    @snow = data['snow'].nil? ? nil : {
+      one_hour: data['snow']['1h'],
+      three_hours: data['snow']['3h']
+    }
   end
 end
