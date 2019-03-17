@@ -1,5 +1,5 @@
-# owm-ruby
+# OpenWeatherMap - Ruby implementation
 
 ### An implementation to easily fetch the OpenWeatherMap API.
 
-[Documentation](https://www.rubydoc.info/gems/owm-ruby)
+[Documentation](https://www.rubydoc.info/gems/openweathermap)
