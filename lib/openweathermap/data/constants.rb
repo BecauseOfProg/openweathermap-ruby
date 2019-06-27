@@ -7,8 +7,7 @@ module OpenWeatherMap
     UNITS = [nil, 'metric', 'imperial']
 
     # Accepted locales
-    LANGS = ['ar', 'bg', 'ca', 'cz', 'de', 'el', 'fa', 'fi', 'fr', 'gl', 'hr', 'hu', 'it', 'ja', 'kr', 'la',
-      'lt', 'mk', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'sk', 'sl', 'es', 'tr', 'ua', 'vi', 'zh_cn', 'zh_tw' 'en']
+    LANGS = %w(ar bg ca cz de el fa fi fr gl hr hu it ja kr la lt mk nl pl pt ro ru se sk sl es tr ua vi zh_cn zh_tw en)
 
     # The different URLs 
     URLS = {
