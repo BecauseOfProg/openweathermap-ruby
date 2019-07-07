@@ -35,7 +35,7 @@ module OpenWeatherMap
     # @param location [String, Integer, Array] the location
     #   Can be one of this type :
     #   - String : search by city name
-    #   - Integer : search by city ID (refer to bulk.openweathermap.org/sample/city.list.json.gz)
+    #   - Integer : search by city ID (refer to http://bulk.openweathermap.org/sample/city.list.json.gz)
     #   - Array : search by coordinates (format : [lon, lat])
     # @return [OpenWeatherMap::CurrentWeather] requested data
     def current(location)
