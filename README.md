@@ -48,7 +48,7 @@ gem install openweathermap
 If you setup the library for medium or big projects, it's recommended to write it in your Gemfile.
 
 ```gemfile
-gem 'openweathermap', '~> 0.2.2'
+gem 'openweathermap', '~> 0.2.3'
 ```
 
 After, use again the `install` command, but without the package name.
@@ -75,7 +75,7 @@ gem build ./openweathermap.gemspec
 Finally, install it on your system.
 
 ```bash
-gem install ./openweathermap-0.2.2.gem
+gem install ./openweathermap-0.2.3.gem
 ```
 
 ## ⌨ Basic interactions
