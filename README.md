@@ -5,6 +5,17 @@
   <a href="LICENSE">License</a> - <a href="http://rubydoc.info/gems/openweathermap">RubyDoc</a>
 </div>
 
+## Why would I use this library ?
+
+Before writing this OpenWeatherMap implementation, I checked for existing ones on rubygems.org. There's only small libraries, that has at least one or two good thing but that's all. Consequently, I decided to make my own one, combining all their advantages :
+
+- **Centralized :** all the options and fetch methods are stored in one class, that is initialized only once in all the program. Parameters are the same across all requests.
+- **Fast :** the only thing that can slow the library is your Internet connection : indeed, no heavy operations are made in the background. As soon as it receives weather conditions, the only step for it is organizing them.
+- **Simple :** the library only contains essential operations to keep the number of methods low. Moreover, all the information is perfectly human-readable.
+- **Documented :** every method and class attribute is explained and every exception thrown is explicit, therefore learning or debugging the library remains easy.
+
+This work resulted in a powerful implementation that responds to primary needs while staying abordable.
+
 - [📌 Requirements](#-requirements)
 - [🔧 Setup](#-setup)
   - [Quick installation](#quick-installation)
@@ -90,7 +101,7 @@ The constructor takes three parameters :
 - The first is an API key, that can be generated on the [OpenWeatherMap website](https://openweathermap.org/appid)
 - The second is the language of the data. It can be one of these : Arabic - ar, Bulgarian - bg, Catalan - ca, Czech - cz, German - de, Greek - el, English - en, Persian (Farsi) - fa, Finnish - fi, French - fr, Galician - gl, Croatian - hr, Hungarian - hu, Italian - it, Japanese - ja, Korean - kr, Latvian - la, Lithuanian - lt, Macedonian - mk, Dutch - nl, Polish - pl, Portuguese - pt, Romanian - ro, Russian - ru, Swedish - se, Slovak - sk, Slovenian - sl, Spanish - es, Turkish - tr, Ukrainian - ua, Vietnamese - vi, Chinese Simplified - zh_cn, Chinese Traditional - zh_tw.
 - The third is the unit system. It can be one of these :
-  - none (temperatures in Kelvin)
+  - default (temperatures in Kelvin)
   - metric (temperatures in Celsius)
   - imperial (temperatures in Fahrenheit)
 
@@ -122,7 +133,7 @@ Its parameter is the same as the `current` method. It will return a `OpenWeather
 
 ### Possible exceptions
 
-Your requests may return exceptions that are in the `OpenWeatherMap::Exceptions` module :
+Your requests may return exceptions that are in the `OpenWeatherMap::Exceptions` module. All are based on the `OpenWeatherMap::Exception` class.
 
 - An `Unauthorized` exception, caused when your API key is wrong
 - An `UnknownLocation` exception, caused if the location you wrote is wrong
