@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'openweathermap'
-  s.version     = '0.2.2'
+  s.version     = '0.2.3'
   s.date        = '2019-03-16'
   s.summary     = "🌐 Implementation of OpenWeatherMap API."
   s.description = "An implementation to easily fetch the OpenWeatherMap API."
