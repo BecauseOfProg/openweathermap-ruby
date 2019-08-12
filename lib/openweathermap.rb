@@ -68,25 +68,32 @@ module OpenWeatherMap
     ##
     # Exception to handle unknown lang
 
-    class UnknownLang < Exception
+    class UnknownLang < OpenWeatherMap::Exception
     end
 
     ##
     # Exception to handle unknown units
 
-    class UnknownUnits < Exception
+    class UnknownUnits < OpenWeatherMap::Exception
     end
 
     ##
     # Exception to handle unknown location
 
-    class UnknownLocation < Exception
+    class UnknownLocation < OpenWeatherMap::Exception
     end
 
     ##
     # Exception to tell that the API key isn't authorized
 
-    class Unauthorized < Exception
+    class Unauthorized < OpenWeatherMap::Exception
     end
+
+    ##
+    # Exception to handle data error
+
+    class DataError < OpenWeatherMap::Exception
+    end
+
   end
 end

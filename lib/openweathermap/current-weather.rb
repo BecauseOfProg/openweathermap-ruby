@@ -23,8 +23,11 @@ module OpenWeatherMap
     # @param data [Hash] mixed data from the request
 
     def initialize(data)
-      data = JSON.parse(data)
-      p data
+      begin
+        data = JSON.parse(data)
+      rescue JSON::JSONError => e
+        raise OpenWeatherMap::Exceptions::DataError, "error while parsing data : #{e}"
+      end
       @city = OpenWeatherMap::City.new(data['name'], data['coord']['lon'], data['coord']['lat'], data['sys']['country'])
       @weather_conditions = OpenWeatherMap::WeatherConditions.new(data)
     end
