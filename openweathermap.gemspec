@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "An implementation to easily fetch the OpenWeatherMap API."
   s.authors     = ["Exybore"]
   s.email       = 'exybore@becauseofprog.fr'
-  s.files       = ["lib/openweathermap.rb", "lib/openweathermap/current-weather.rb", "lib/openweathermap/forecast.rb", "lib/openweathermap/classes.rb", "lib/openweathermap/api.rb", "lib/openweathermap/data/constants.rb", "lib/openweathermap/data/exceptions.rb", ]
+  s.files       = ["lib/openweathermap.rb", "lib/openweathermap/current-weather.rb", "lib/openweathermap/forecast.rb", "lib/openweathermap/classes.rb", "lib/openweathermap/api.rb"]
   s.homepage    = 'https://github.com/becauseofprog/openweathermap-ruby'
   s.license     = 'MIT'
 end

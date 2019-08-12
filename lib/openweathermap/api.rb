@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module OpenWeatherMap
   # The main API class.
   class API
     # @return [String] Default lang to use
-    attr_accessor :lang
+    attr_reader :lang
     
     # @return [String] Default units to use
-    attr_accessor :units
+    attr_reader :units
 
     # Initialize the API object
     #
@@ -20,13 +22,13 @@ module OpenWeatherMap
     #   - imperial (temperatures in Fahrenheit)
     # @raise [OpenWeatherMap::Exceptions::UnknownLang] if the selected lang is not unknown
     # @raise [OpenWeatherMap::Exceptions::UnknownUnits] if the selected units is not unknown
-    def initialize(api_key, lang = 'en', units = nil)
+    def initialize(api_key, lang = 'en', units = 'default')
       @api_key = api_key
 
-      raise OpenWeatherMap::Exceptions::UnknownLang, "[owm-ruby] error : unknown lang #{lang}" unless OpenWeatherMap::Constants::LANGS.include? lang
+      raise OpenWeatherMap::Exceptions::UnknownLang, "unknown lang #{lang}" unless OpenWeatherMap::Constants::LANGS.include? lang
       @lang = lang
 
-      raise OpenWeatherMap::Exceptions::UnknownUnits, "[owm-ruby] error : unknown units #{units}" unless OpenWeatherMap::Constants::UNITS.include? units
+      raise OpenWeatherMap::Exceptions::UnknownUnits, "unknown units #{units}" unless OpenWeatherMap::Constants::UNITS.include? units
       @units = units
     end
 
@@ -79,16 +81,12 @@ module OpenWeatherMap
       }
       params.merge! options
 
-      url = "#{OpenWeatherMap::Constants::API_URL}/#{url}?"
-
-      params.each do |key, value|
-        url += "#{key}=#{value}&"
-      end
+      url = "#{OpenWeatherMap::Constants::API_URL}/#{url}?#{URI.encode_www_form(params)}"
 
       response = Net::HTTP.get_response(URI(url))
       case response.code.to_i
-      when 401 then raise OpenWeatherMap::Exceptions::Unauthorized, "[openweathermap] error : unauthorized key. API message : #{response.message}"
-      when 404 then raise OpenWeatherMap::Exceptions::UnknownLocation, "[openweathermap] error : unknown location. API message : #{location}"
+      when 401 then raise OpenWeatherMap::Exceptions::Unauthorized, "unauthorized key. API message : #{response.message}"
+      when 404 then raise OpenWeatherMap::Exceptions::UnknownLocation, "unknown location. API message : #{location}"
       else response.body
       end
     end

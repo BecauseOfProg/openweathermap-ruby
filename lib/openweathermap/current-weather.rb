@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenWeatherMap
   # Represents the current weather at a location
   class CurrentWeather
@@ -12,6 +14,7 @@ module OpenWeatherMap
     # @param data [Hash] mixed data from the request
     def initialize(data)
       data = JSON.parse(data)
+      p data
       @city = OpenWeatherMap::City.new(data['name'], data['coord']['lon'], data['coord']['lat'], data['sys']['country'])
       @weather_conditions = OpenWeatherMap::WeatherConditions.new(data)
     end

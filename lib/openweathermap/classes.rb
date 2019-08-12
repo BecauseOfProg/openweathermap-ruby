@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenWeatherMap
   # Represents a city
   class City
@@ -101,7 +103,7 @@ module OpenWeatherMap
       @main = data['weather'][0]['main']
       @description = data['weather'][0]['description']
       @icon = "https://openweathermap.org/img/w/#{data['weather'][0]['icon']}.png"
-      @emoji = OpenWeatherMap::Constants::CONDITION_CODE[data['weather'][0]['icon'].sub('n', 'd')]
+      @emoji = OpenWeatherMap::Constants::CONDITION_CODE[data['weather'][0]['icon'].tr('n', 'd')]
       @temperature = data['main']['temp']
       @temp_min = data['main']['temp_min'].to_f
       @temp_max = data['main']['temp_max'].to_f

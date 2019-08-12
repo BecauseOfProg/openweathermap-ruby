@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenWeatherMap
   # Represents the forecast for a specific location
   class Forecast
