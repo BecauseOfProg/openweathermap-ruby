@@ -1,17 +1,27 @@
 # frozen_string_literal: true
 
 module OpenWeatherMap
+
+  ##
   # Represents the current weather at a location
+
   class CurrentWeather
+
+    ##
     # @return [OpenWeatherMap::WeatherConditions] Conditions at the moment
+
     attr_reader :weather_conditions
 
+    ##
     # @return [OpenWeatherMap::City] Requested city's data
+
     attr_reader :city
-    
+
+    ##
     # Create a new CurrentWeather object
     #
     # @param data [Hash] mixed data from the request
+
     def initialize(data)
       data = JSON.parse(data)
       p data
