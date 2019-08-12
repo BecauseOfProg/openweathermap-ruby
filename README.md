@@ -5,6 +5,17 @@
   <a href="LICENSE">License</a> - <a href="http://rubydoc.info/gems/openweathermap">RubyDoc</a>
 </div>
 
+## Why would I use this library ?
+
+Before writing this OpenWeatherMap implementation, I checked for existing ones on rubygems.org. There's only small libraries, that has at least one or two good thing but that's all. Consequently, I decided to make my own one, combining all their advantages :
+
+- **Centralized :** all the options and fetch methods are stored in one class, that is initialized only once in all the program. Parameters are the same across all requests.
+- **Fast :** the only thing that can slow the library is your Internet connection : indeed, no heavy operations are made in the background. As soon as it receives weather conditions, the only step for it is organizing them.
+- **Simple :** the library only contains essential operations to keep the number of methods low. Moreover, all the information is perfectly human-readable.
+- **Documented :** every method and class attribute is explained and every exception thrown is explicit, therefore learning or debugging the library remains easy.
+
+This work resulted in a powerful implementation that responds to primary needs while staying abordable.
+
 - [📌 Requirements](#-requirements)
 - [🔧 Setup](#-setup)
   - [Quick installation](#quick-installation)
