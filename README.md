@@ -7,7 +7,7 @@
 
 ## Why would I use this library ?
 
-Before writing this OpenWeatherMap implementation, I checked for existing ones on rubygems.org. There's only small libraries, that has at least one or two good thing but that's all. Consequently, I decided to make my own one, combining all their advantages :
+Before writing this OpenWeatherMap implementation, I checked for existing ones on rubygems.org. There're only small libraries, that has at least one or two good thing but that's all. Consequently, I decided to make my own one, combining all their advantages :
 
 - **Centralized :** all the options and fetch methods are stored in one class, that is initialized only once in all the program. Parameters are the same across all requests.
 - **Fast :** the only thing that can slow the library is your Internet connection : indeed, no heavy operations are made in the background. As soon as it receives weather conditions, the only step for it is organizing them.
@@ -143,28 +143,8 @@ These exceptions will have in their body the message sent by the OpenWeatherMap 
 ## 📜 Credits
 
 - Used service : [OpenWeatherMap](https://openweathermap.org)
-- Maintainer : [Exybore](https://github.com/exybore)
+- Maintainer : [Théo Vidal (exybore)](https://github.com/theovidal)
 
 ## 🔐 License
 
-MIT License
-
-Copyright (c) 2019 BecauseOfProg
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+See [License file](./LICENSE)
